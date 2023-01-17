@@ -1,5 +1,25 @@
 <div class="container px-5 px-sm-0">
     <div class="row">
         <%=render 'user_info', user: @user %>
+      <div class="col-md-8 offset-md-1">
+        <h2>Books</h2>
+          <table class="table">
+              <tbody>
+                <tr>
+                  <th></th>
+                  <th>Title</th>
+                  <th>Opinion</th>
+                </tr>
+              </tbody>
+              <tr>
+                <% @books.each do |book| %>
+                <td><%= image_tag @user.get_profile_image(100,100) %></td>
+                <!--↓のbooks_pathをbooks showパスに修正-->
+                <td><%= link_to book.title, books_path %></td>
+                <td><%= book.body %></td>
+                <%end%>
+              </tr>
+          </table>
+      </div>
     </div>
 </div>
