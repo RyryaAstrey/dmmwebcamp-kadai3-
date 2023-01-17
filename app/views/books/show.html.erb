@@ -1,2 +1,7 @@
 <h1>Books#show</h1>
 <p>Find me in app/views/books/show.html.erb</p>
+<div class="container px-5 px-sm-0">
+    <div class="row">
+        <%=render 'user_info', books: @books %>
+    </div>
+</div>
