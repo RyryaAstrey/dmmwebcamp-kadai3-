@@ -2,14 +2,16 @@ class UsersController < ApplicationController
   before_action :make_book
   
   def index
-    
+    @users=User.all
   end
 
   def show
-    @books = Book.all
+    @user_i=User.find(params[:id])
+    @book_opinions = @user_i.books
   end
 
   def edit
+    @user_e = User.find(params[:id])
   end
   
   protected

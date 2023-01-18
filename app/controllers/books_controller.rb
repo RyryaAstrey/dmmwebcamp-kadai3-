@@ -1,10 +1,11 @@
 class BooksController < ApplicationController
-  before_action :make_book
+  before_action :make_book, only: [:index, :show, :edit]
   
   def index
   end
 
   def show
+    @book_i = Book.find(params[:id])
   end
 
   def edit
@@ -18,10 +19,16 @@ class BooksController < ApplicationController
     redirect_to user_path(current_user.id)
   end
   
-  def destroy
-    @book_d = Book.find(params[:id])
-    @book_d.destroy
+  def update
+    book=Book.find(params[:id])
+    book.update(book_params)
     redirect_to books_path
+  end
+  
+  def destroy
+    @book_i = Book.find(params[:id])
+    @book_i.destroy
+    redirect_to book_path
   end
   
   protected
