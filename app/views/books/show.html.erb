@@ -1,14 +1,16 @@
 <div class="container px-5 px-sm-0">
     <div class="row">
-        <%=render 'user_info', user: @user %>
+        <%=render 'user_info', user: @book_i.user %>
         <div class="col-md-8 offset-md-1">
             <h2>Book detail</h2>
             <table class="table">
                 <tbody>
                     <tr>
                       <td>
-                        <%= image_tag @user.get_profile_image(100,100) %><br>
-                        <%= link_to @book_i.user.name, user_path %></td>
+                        <%= link_to user_path(@book_i.user.id) do %>
+                          <%= image_tag @book_i.user.get_profile_image(100,100) %><br>
+                        <%end%>
+                        <%= link_to @book_i.user.name, user_path(@book_i.user.id) %></td>
                       <td><%= link_to @book_i.title, book_path(@book_i.id) %></td>
                       <td><%= @book_i.body %></td>
                       <% if @book_i.user == current_user %>

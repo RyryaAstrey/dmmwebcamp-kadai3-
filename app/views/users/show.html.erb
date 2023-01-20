@@ -1,6 +1,6 @@
 <div class="container px-5 px-sm-0">
     <div class="row">
-        <%=render 'books/user_info', user: @user %>
+        <%=render 'books/user_info', user: @user_i %>
       <div class="col-md-8 offset-md-1">
         <h2>Books</h2>
           <table class="table">
@@ -13,7 +13,10 @@
               </tbody>
               <% @book_opinions.each do |book_opinions| %>
                 <tr>
-                  <td><%= image_tag book_opinions.user.get_profile_image(100,100) %></td>
+                  <td>
+                    <%= link_to user_path(@user_i.id) do %>
+                      <%= image_tag book_opinions.user.get_profile_image(100,100) %></td>
+                    <%end%>
                   <td><%= link_to book_opinions.title, book_path(book_opinions.id) %></td>
                   <td><%= book_opinions.body %></td>
                 </tr>
